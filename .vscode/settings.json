@@ -1,0 +1,13 @@
+{
+    "markdownlint.config": {
+        "default": true,
+        "MD007": {
+            "indent": 4
+        },
+        "no-hard-tabs": false,
+        "no-inline-html": false,
+        "no-emphasis-as-header": false,
+        "no-trailing-punctuation": false,
+    },
+    "files.autoSave": "afterDelay"
+}
