@@ -8,6 +8,8 @@
         "no-inline-html": false,
         "no-emphasis-as-header": false,
         "no-trailing-punctuation": false,
+        // This is utterly useless in song MDs.
+        "ol-prefix": false,
     },
     "files.autoSave": "afterDelay"
 }
