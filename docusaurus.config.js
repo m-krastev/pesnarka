@@ -45,7 +45,6 @@ const config = {
         localeConfigs:{
             bg:{
                 htmlLang: 'bg-BG'
-
             }
         }
     },
@@ -110,10 +109,11 @@ const config = {
                 // },
                 hideOnScroll: true,
                 items: [
-                    {
-                        type: 'custom-SortListButton',
-                        position: 'left',
-                    },
+                    // ALPHASORT: Add this once you're smarter KEK
+                    // {
+                    //     type: 'custom-SortListButton',
+                    //     position: 'left',
+                    // },
                     //   {
                     //     type: 'doc',
                     //     docId: '1',
