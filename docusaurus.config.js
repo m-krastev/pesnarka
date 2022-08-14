@@ -1,25 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+const {indexedSort} = require('./src/js')
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
-// Reverse the sidebar items ordering (including nested category items)
-function fixedSort(items) {
-    
-    // Reverse items in categories
-    const result = items.map((item) => {
-
-        if (item.type === 'category') {
-            return { ...item, items: fixedSort(item.items) };
-        }
-        return item;
-    });
-    
-    result.sort((a, b) => a.id - b.id)
-    return result;
-}
-
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -60,7 +44,7 @@ const config = {
                 
                     async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
                         const sidebarItems = await defaultSidebarItemsGenerator(args);
-                        return fixedSort(sidebarItems);
+                        return indexedSort(sidebarItems);
                     },
 
                     // Please change this to your repo.
@@ -110,8 +94,9 @@ const config = {
                 hideOnScroll: true,
                 items: [
                     // ALPHASORT: Add this once you're smarter KEK
+                    // BUG: On mobile, the button appears next to logo text rather than side menu
                     // {
-                    //     type: 'custom-SortListButton',
+                    //     type: 'custom-SortSidebarButton',
                     //     position: 'left',
                     // },
                     //   {
@@ -152,6 +137,7 @@ const config = {
             },
         }),
     plugins: [
+        // Load font settings from local storage
         async function loadFontSettings(context, options) {
             return {
                 name: 'load-font-settings',
@@ -160,7 +146,11 @@ const config = {
                         preBodyTags: [
                             {
                                 tagName: 'script',
-                                innerHTML: `function loadFontSettingsFromLocalStorage(){const doc = document.querySelector(":root");const storage = window.localStorage;doc.style.setProperty("--custom-line-height",storage.getItem("lineHeight"));doc.style.setProperty("--custom-font-weight",storage.getItem("fontWeight"));doc.style.setProperty("--custom-font-factor",storage.getItem("fontSizeFactor"));}loadFontSettingsFromLocalStorage();`
+                                innerHTML: `const doc = document.querySelector(":root");
+                                const storage = window.localStorage;
+                                doc.style.setProperty("--custom-line-height", storage.getItem("lineHeight"));
+                                doc.style.setProperty("--custom-font-weight",storage.getItem("fontWeight"));
+                                doc.style.setProperty("--custom-font-factor",storage.getItem("fontSizeFactor"));`
                             }
                         ]
                     }
@@ -170,6 +160,35 @@ const config = {
         },
 
         require.resolve("docusaurus-plugin-image-zoom"),
+
+//         async function getSortPreferences(context,options){
+//             return{
+//                 name: 'get-sort-preferences',
+//                 injectHtmlTags({content}){
+//                     return {
+//                         postBodyTags: {
+//                             attributes: {defer:true},
+//                             tagName: 'script',
+//                             innerHTML: `const alphaSort = JSON.parse(window.localStorage.getItem('sort')) ?? false;
+// if (alphaSort === true) {
+//     let sidebar_ul = document.querySelector('ul.theme-doc-sidebar-menu')
+//     const sidebar = [...sidebar_ul.children]
+
+//     sidebar.sort((a, b) =>
+//         a.innerText.includes('.') && b.innerText.includes('.') 
+//         ? (a.innerText.split('.')[1].trim()).localeCompare(b.innerText.split('.')[1].trim()) 
+//         : 0)
+
+//     sidebar_ul.innerHTML = ""
+
+//     sidebar.forEach((el) => sidebar_ul.append(el))
+
+// }`
+//                         }
+//                     }
+//                 }
+//             }
+//         }
 
     ],
     themes: [
@@ -187,7 +206,7 @@ const config = {
                 highlightSearchTermsOnTargetPage: false,
             },
         ]
-    ]
+    ],
 };
 
 module.exports = config;

@@ -1,7 +1,7 @@
 import ComponentTypes from '@theme-original/NavbarItem/ComponentTypes';
-import SortListButton from '@site/src/components/NavbarItems/SortList';
+import SortSidebarButton from '@site/src/components/NavbarItems/SortSidebarButton';
 
 export default {
     ...ComponentTypes,
-    'custom-SortListButton': SortListButton,
+    'custom-SortSidebarButton': SortSidebarButton,
 };
