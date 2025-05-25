@@ -2,8 +2,9 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 const {indexedSort} = require('./src/js')
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -14,6 +15,7 @@ const config = {
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/logo_propovedi.png',
+    staticDirectories: ['static'],
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
@@ -115,12 +117,19 @@ const config = {
                         label: 'Нови песни',
                         position: 'right',
                     },
+                    {
+                        href: 'https://github.com/m-krastev/pesnarka/',
+                        position: 'right',
+                        className: 'header-github-link',
+                        'aria-label': 'GitHub repository',
+                    },
+                    
                 ],
             },
 
             prism: {
-                theme: lightCodeTheme,
-                darkTheme: darkCodeTheme,
+                theme: lightTheme,
+                darkTheme: darkTheme,
             },
 
             zoom: {

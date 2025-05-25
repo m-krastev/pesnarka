@@ -1,0 +1,42 @@
+.navContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  position: sticky; /* Make it sticky */
+  top: 0; /* Stick to the top of the viewport */
+  background-color: var(--ifm-background-color); /* Ensure it has a background */
+  padding: 1rem 0; /* Add some padding for visual separation */
+  z-index: 100; /* Ensure it stays on top of other content */
+  border-bottom: 1px solid var(--ifm-color-emphasis-300); /* Optional: add a subtle border */
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  /* Default (light mode) styles */
+  color: var(--ifm-navbar-link-hover-color);
+  border: 1px solid var(--ifm-navbar-link-hover-color);
+}
+
+.navLinkInactive {
+  color: var(--ifm-color-emphasis-300);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* Dark mode styles */
+html[data-theme='dark'] .navLink {
+  color: var(--ifm-navbar-link-hover-color); /* Should be consistent */
+  border: 1px solid var(--ifm-navbar-link-hover-color);
+}
+
+html[data-theme='dark'] .navLinkInactive {
+  color: var(--ifm-color-emphasis-300); /* Should be consistent */
+  border: 1px solid var(--ifm-color-emphasis-300);
+}

@@ -16,8 +16,7 @@ const DocSidebarMobileSecondaryMenu = ({sidebar, path}) => {
   let alphaSort = false
   try {
       alphaSort = JSON.parse(window.localStorage.getItem("sort")) ?? false;
-  } catch (error) {
-  }
+  } catch (error) { }
 
   const new_sidebar = alphaSort === true ? alphabeticalDiscardIndexSort(sidebar) : indexedSort(sidebar);
 

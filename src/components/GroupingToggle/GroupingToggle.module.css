@@ -1,0 +1,33 @@
+.toggleContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 15px;
+}
+
+.toggleButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  background-color: #f0f0f0; /* Light background for inactive */
+  color: #333; /* Dark text for inactive */
+}
+
+.toggleButtonActive {
+  background-color: var(--ifm-navbar-link-hover-color);
+  color: white;
+}
+
+/* Dark mode styles for buttons */
+html[data-theme='dark'] .toggleButton {
+  background-color: #444; /* Darker background for inactive in dark mode */
+  color: #e0e0e0; /* Lighter text for inactive in dark mode */
+}
+
+html[data-theme='dark'] .toggleButtonActive {
+  background-color: var(--ifm-navbar-link-hover-color); /* Should be consistent */
+  color: white;
+}

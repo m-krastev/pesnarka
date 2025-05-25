@@ -1,19 +1,4 @@
----
-title: 'Духовни песни'
-slug: '/'
-sidebar_label: '/'
-hide_title: true
-pagination_next: null
-pagination_prev: null
-sidebar_position: -1
----
-
-import DocCardList from '@theme/DocCardList';
-let sorting = false
-try {
-    sorting = JSON.parse(window.localStorage.getItem("sort")) ?? false
-} catch (error) {}
-const abc = [
+export const sidebarItems = [
     {
         "type": "link",
         "label": "1. Хвалете Царя",
@@ -4412,10 +4397,6 @@ const abc = [
         "href": "/pesnarka/733",
         "docId": "733"
     }
-]
-if (sorting === true) abc.sort((a, b) => a.label.split(".")[1].trim().localeCompare(b.label.split(".")[1].trim()))
-export const sidebar_Items = abc
+];
 
-<article className="margin-top--lg">
-    <DocCardList items={sidebar_Items} />
-</article>
+// export const sidebarSort = JSON.parse(window.localStorage.getItem("sort")) ?? false;

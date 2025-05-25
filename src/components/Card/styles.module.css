@@ -1,0 +1,49 @@
+.card {
+  background-color: #f0f2f5; /* Light gray background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80px; /* Ensure a minimum height for consistent cards */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardLink {
+  text-decoration: none;
+  color: #333; /* Dark gray text color */
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%; /* Make the link take full width of the card */
+  display: block; /* Ensure the link behaves as a block element */
+}
+
+.cardLink:hover {
+  color: #007bff; /* Blue on hover */
+}
+
+/* Dark mode styles */
+html[data-theme='dark'] .card {
+  background-color: #2a2a2a; /* Darker background for cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='dark'] .card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme='dark'] .cardLink {
+  color: #e0e0e0; /* Lighter text color for dark mode */
+}
+
+html[data-theme='dark'] .cardLink:hover {
+  color: var(--ifm-navbar-link-hover-color); /* Lighter blue on hover for dark mode */
+}
